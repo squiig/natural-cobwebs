@@ -1,0 +1,6 @@
+main: com.cerrealic.naturalcobwebs.NaturalCobwebsPlugin
+name: NaturalCobwebs
+version: 0.1.0-SNAPSHOT
+api-version: 1.16
+description: Plugin that fills nooks and crannies with cobwebs over time.
+author: cerrealic

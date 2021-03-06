@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+}
+
+group 'com.cerrealic'
+version '0.1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+project.configurations.implementation.setCanBeResolved(true)
+
+jar {
+	manifest {
+		attributes('Main-Class': 'com.cerrealic.naturalcobwebs.NaturalCobwebsPlugin')
+	}
+
+	from {
+		configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+}
+
+repositories {
+	flatDir {
+		dirs 'C:/Users/Stan/Spigot/BuildTools/'
+	}
+
+	jcenter()
+	mavenCentral()
+
+	// Spigot-API
+	maven {
+		url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+	}
+
+	/*
+	 As Spigot-API depends on the Bungeecord ChatComponent-API,
+	we need to add the Sonatype OSS repository, as Gradle,
+	in comparison to maven, doesn't want to understand the ~/.m2
+	directory unless added using mavenLocal(). Maven usually just gets
+	it from there, as most people have run the BuildTools at least once.
+	This is therefore not needed if you're using the full Spigot/CraftBukkit,
+	or if you're using the Bukkit API.
+	*/
+	maven {
+		url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+	}
+
+	maven {
+		url = 'https://jitpack.io'
+	}
+
+	mavenLocal()
+}
+
+dependencies {
+	compileOnly 'org.spigotmc:spigot:1.16.4' // The full Spigot server with no shadowing. Requires mavenLocal.
+	implementation 'com.github.squiig:cerspi-lib:3.3.5'
+}
+
+//configurations.implementation {
+//	resolutionStrategy.cacheChangingModulesFor 30, 'seconds'
+//}
