@@ -10,6 +10,7 @@ import java.util.HashSet;
 
 public class NaturalCobwebsConfig extends CerspiPluginConfig {
 	private ConfigNode<Float> cobwebSpawnChance;
+	private ConfigNode<Integer> cobwebSpawnPeriod;
 
 	public NaturalCobwebsConfig(JavaPlugin plugin, FileConfiguration fileConfiguration) {
 		super(plugin, fileConfiguration);
@@ -17,7 +18,8 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 
 	@Override
 	protected HashSet<ConfigNode> getDefinedNodes() {
-		cobwebSpawnChance = new ConfigNode<>("spawn-chance", 0.5f);
+		cobwebSpawnChance = new ConfigNode<>("cobweb-spawn-chance", 0.5f);
+		cobwebSpawnPeriod = new ConfigNode<>("cobweb-spawn-period", 200);
 		return Sets.newHashSet(cobwebSpawnChance);
 	}
 
@@ -27,5 +29,13 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 
 	public void setCobwebSpawnChance(float cobwebSpawnChance) {
 		setNodeValue(this.cobwebSpawnChance, cobwebSpawnChance);
+	}
+
+	public int getCobwebSpawnPeriod() {
+		return cobwebSpawnPeriod.getValue();
+	}
+
+	public void setCobwebSpawnPeriod(int cobwebSpawnPeriod) {
+		setNodeValue(this.cobwebSpawnPeriod, cobwebSpawnPeriod);
 	}
 }
