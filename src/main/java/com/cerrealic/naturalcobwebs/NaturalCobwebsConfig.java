@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashSet;
 
 public class NaturalCobwebsConfig extends CerspiPluginConfig {
-	private ConfigNode<Float> cobwebSpawnChance;
+	private ConfigNode<Double> cobwebSpawnChance;
 	private ConfigNode<Integer> cobwebSpawnPeriod;
 
 	public NaturalCobwebsConfig(JavaPlugin plugin, FileConfiguration fileConfiguration) {
@@ -18,16 +18,16 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 
 	@Override
 	protected HashSet<ConfigNode> getDefinedNodes() {
-		cobwebSpawnChance = new ConfigNode<>("cobweb-spawn-chance", 0.5f);
+		cobwebSpawnChance = new ConfigNode<>("cobweb-spawn-chance", 0.5d);
 		cobwebSpawnPeriod = new ConfigNode<>("cobweb-spawn-period", 200);
 		return Sets.newHashSet(cobwebSpawnChance, cobwebSpawnPeriod);
 	}
 
-	public float getCobwebSpawnChance() {
+	public double getCobwebSpawnChance() {
 		return cobwebSpawnChance.getValue();
 	}
 
-	public void setCobwebSpawnChance(float cobwebSpawnChance) {
+	public void setCobwebSpawnChance(double cobwebSpawnChance) {
 		setNodeValue(this.cobwebSpawnChance, cobwebSpawnChance);
 	}
 

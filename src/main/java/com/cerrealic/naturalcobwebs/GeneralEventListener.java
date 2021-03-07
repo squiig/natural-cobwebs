@@ -25,7 +25,7 @@ public class GeneralEventListener implements Listener {
 		Chunk chunk = event.getChunk();
 		tryRemoveSpawner(chunk);
 
-		CobwebSpawnerTask spawnerTask = new CobwebSpawnerTask(chunk, 0, config.getCobwebSpawnPeriod(), config.getCobwebSpawnChance());
+		CobwebSpawnerTask spawnerTask = new CobwebSpawnerTask(chunk, 0, config.getCobwebSpawnPeriod(), (float)config.getCobwebSpawnChance());
 		spawnerTasks.put(chunk, spawnerTask);
 		spawnerTask.start();
 	}
