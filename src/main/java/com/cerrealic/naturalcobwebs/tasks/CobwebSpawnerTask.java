@@ -51,8 +51,8 @@ public class CobwebSpawnerTask {
 
 	private void attemptSpawn() {
 		ChunkSnapshot cs = chunk.getChunkSnapshot();
-		for (int x = 0; x < 16; x++) {
-			for (int z = 0; z < 16; z++) {
+		for (int x = 1; x < 15; x++) {
+			for (int z = 1; z < 15; z++) {
 				int columnHeight = cs.getHighestBlockYAt(x, z);
 				for (int y = 1; y < columnHeight; y++) {
 					Material mat = cs.getBlockType(x, y, z);
