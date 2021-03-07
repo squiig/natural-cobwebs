@@ -9,13 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashSet;
 
 public class NaturalCobwebsConfig extends CerspiPluginConfig {
-	private ConfigNode<Boolean>
-			creeperGriefing,
-			crystalGriefing,
-			fireballGriefing,
-			tntMinecartGriefing,
-			tntGriefing,
-			witherGriefing;
+	private ConfigNode<Float> cobwebSpawnChance;
 
 	public NaturalCobwebsConfig(JavaPlugin plugin, FileConfiguration fileConfiguration) {
 		super(plugin, fileConfiguration);
@@ -23,60 +17,15 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 
 	@Override
 	protected HashSet<ConfigNode> getDefinedNodes() {
-		creeperGriefing = new ConfigNode<>("creeper-griefing", false);
-		crystalGriefing = new ConfigNode<>("crystal-griefing", true);
-		fireballGriefing = new ConfigNode<>("fireball-griefing", true);
-		tntMinecartGriefing = new ConfigNode<>("tnt-minecart-griefing", true);
-		tntGriefing = new ConfigNode<>("tnt-griefing", true);
-		witherGriefing = new ConfigNode<>("wither-griefing", true);
-		return Sets.newHashSet(creeperGriefing, crystalGriefing, fireballGriefing, tntMinecartGriefing, tntGriefing, witherGriefing);
+		cobwebSpawnChance = new ConfigNode<>("spawn-chance", 0.5f);
+		return Sets.newHashSet(cobwebSpawnChance);
 	}
 
-	public boolean getCreeperGriefing() {
-		return creeperGriefing.getValue();
+	public float getCobwebSpawnChance() {
+		return cobwebSpawnChance.getValue();
 	}
 
-	public void setCreeperGriefing(boolean creeperGriefing) {
-		setNodeValue(this.creeperGriefing, creeperGriefing);
-	}
-
-	public boolean getCrystalGriefing() {
-		return crystalGriefing.getValue();
-	}
-
-	public void setCrystalGriefing(boolean crystalGriefing) {
-		setNodeValue(this.crystalGriefing, crystalGriefing);
-	}
-
-	public boolean getFireballGriefing() {
-		return fireballGriefing.getValue();
-	}
-
-	public void setFireballGriefing(boolean fireballGriefing) {
-		setNodeValue(this.fireballGriefing, fireballGriefing);
-	}
-
-	public boolean getTntMinecartGriefing() {
-		return tntMinecartGriefing.getValue();
-	}
-
-	public void setTntMinecartGriefing(boolean tntMinecartGriefing) {
-		setNodeValue(this.tntMinecartGriefing, tntMinecartGriefing);
-	}
-
-	public boolean getTntGriefing() {
-		return tntGriefing.getValue();
-	}
-
-	public void setTntGriefing(boolean tntGriefing) {
-		setNodeValue(this.tntGriefing, tntGriefing);
-	}
-
-	public boolean getWitherGriefing() {
-		return witherGriefing.getValue();
-	}
-
-	public void setWitherGriefing(boolean witherGriefing) {
-		setNodeValue(this.witherGriefing, witherGriefing);
+	public void setCobwebSpawnChance(float cobwebSpawnChance) {
+		setNodeValue(this.cobwebSpawnChance, cobwebSpawnChance);
 	}
 }

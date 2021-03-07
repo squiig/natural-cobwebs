@@ -23,7 +23,7 @@ public class GeneralEventListener implements Listener {
 	@EventHandler
 	public void onChunkLoad(ChunkLoadEvent event) {
 		Chunk chunk = event.getChunk();
-		CobwebSpawnerTask spawnerTask = new CobwebSpawnerTask(chunk, 0, 200, 1);
+		CobwebSpawnerTask spawnerTask = new CobwebSpawnerTask(chunk, 0, 200, config.getCobwebSpawnChance());
 		spawnerTasks.put(chunk, spawnerTask);
 		spawnerTask.start();
 	}
