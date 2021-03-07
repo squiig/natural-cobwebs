@@ -19,9 +19,9 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 
 	@Override
 	protected HashSet<ConfigNode> getDefinedNodes() {
-		cobwebSpawnChance = new ConfigNode<>("cobweb-spawn-chance", 0.5d);
-		cobwebSpawnPeriod = new ConfigNode<>("cobweb-spawn-period", 200);
-		maxCobwebSpawnsPerChunkSession = new ConfigNode<>("max-cobweb-spawns-per-chunk-session", 150);
+		cobwebSpawnChance = new ConfigNode<>("cobweb-spawn-chance", 0.0003d);
+		cobwebSpawnPeriod = new ConfigNode<>("cobweb-spawn-period", 400);
+		maxCobwebSpawnsPerChunkSession = new ConfigNode<>("max-cobweb-spawns-per-chunk-session", 30);
 		return Sets.newHashSet(cobwebSpawnChance, cobwebSpawnPeriod, maxCobwebSpawnsPerChunkSession);
 	}
 
