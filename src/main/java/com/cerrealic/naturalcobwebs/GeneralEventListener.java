@@ -23,6 +23,8 @@ public class GeneralEventListener implements Listener {
 	@EventHandler
 	public void onChunkLoad(ChunkLoadEvent event) {
 		Chunk chunk = event.getChunk();
+		tryRemoveSpawner(chunk);
+
 		CobwebSpawnerTask spawnerTask = new CobwebSpawnerTask(chunk, 0, config.getCobwebSpawnPeriod(), config.getCobwebSpawnChance());
 		spawnerTasks.put(chunk, spawnerTask);
 		spawnerTask.start();
@@ -30,13 +32,17 @@ public class GeneralEventListener implements Listener {
 
 	@EventHandler
 	public void onChunkUnload(ChunkUnloadEvent event) {
-		if (spawnerTasks.containsKey(event.getChunk())) {
-			spawnerTasks.get(event.getChunk()).stop();
-			spawnerTasks.remove(event.getChunk());
-		}
+		tryRemoveSpawner(event.getChunk());
 	}
 
 	@EventHandler
 	public void onDebugToggle(DebugToggleEvent event) {
+	}
+
+	private void tryRemoveSpawner(Chunk chunk) {
+		if (spawnerTasks.containsKey(chunk)) {
+			spawnerTasks.get(chunk).stop();
+			spawnerTasks.remove(chunk);
+		}
 	}
 }
