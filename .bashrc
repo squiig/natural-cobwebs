@@ -1,10 +1,10 @@
 #
-# Local .bashrc for NeuteredCreepers
+# Local .bashrc for Natural Cobwebs
 # author: cerrealic
 
 alias run='cd server && start start.bat && cd ..'
 alias debug='cd server && start startDebug.bat && cd ..'
-alias bl='../spigot-dev-scripts/build.sh neutered-creepers'
+alias bl='../spigot-dev-scripts/build.sh natural-cobwebs'
 alias bll='bl && run'
 alias bp='bump'
 
