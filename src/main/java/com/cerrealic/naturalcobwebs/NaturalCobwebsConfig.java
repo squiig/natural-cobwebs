@@ -11,6 +11,7 @@ import java.util.HashSet;
 public class NaturalCobwebsConfig extends CerspiPluginConfig {
 	private ConfigNode<Double> cobwebSpawnChance;
 	private ConfigNode<Integer> cobwebSpawnPeriod;
+	private ConfigNode<Integer> maxCobwebSpawnsPerChunkSession;
 
 	public NaturalCobwebsConfig(JavaPlugin plugin, FileConfiguration fileConfiguration) {
 		super(plugin, fileConfiguration);
@@ -20,7 +21,8 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 	protected HashSet<ConfigNode> getDefinedNodes() {
 		cobwebSpawnChance = new ConfigNode<>("cobweb-spawn-chance", 0.5d);
 		cobwebSpawnPeriod = new ConfigNode<>("cobweb-spawn-period", 200);
-		return Sets.newHashSet(cobwebSpawnChance, cobwebSpawnPeriod);
+		maxCobwebSpawnsPerChunkSession = new ConfigNode<>("max-cobweb-spawns-per-chunk-session", 150);
+		return Sets.newHashSet(cobwebSpawnChance, cobwebSpawnPeriod, maxCobwebSpawnsPerChunkSession);
 	}
 
 	public double getCobwebSpawnChance() {
@@ -37,5 +39,13 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 
 	public void setCobwebSpawnPeriod(int cobwebSpawnPeriod) {
 		setNodeValue(this.cobwebSpawnPeriod, cobwebSpawnPeriod);
+	}
+
+	public int getMaxCobwebSpawnsPerChunkSession() {
+		return maxCobwebSpawnsPerChunkSession.getValue();
+	}
+
+	public void setMaxCobwebSpawnsPerChunkSession(int maxCobwebSpawnsPerChunkSession) {
+		setNodeValue(this.maxCobwebSpawnsPerChunkSession, maxCobwebSpawnsPerChunkSession);
 	}
 }

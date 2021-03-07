@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class GeneralEventListener implements Listener {
 	private final NaturalCobwebsConfig config;
-	private Map<Chunk, CobwebSpawnerTask> spawnerTasks;
+	private final Map<Chunk, CobwebSpawnerTask> spawnerTasks;
 
 	public GeneralEventListener(NaturalCobwebsPlugin plugin) {
 		this.config = plugin.getNaturalCobwebsConfig();
@@ -25,7 +25,7 @@ public class GeneralEventListener implements Listener {
 		Chunk chunk = event.getChunk();
 		tryRemoveSpawner(chunk);
 
-		CobwebSpawnerTask spawnerTask = new CobwebSpawnerTask(chunk, 0, config.getCobwebSpawnPeriod(), (float)config.getCobwebSpawnChance());
+		CobwebSpawnerTask spawnerTask = new CobwebSpawnerTask(chunk, 0, config.getCobwebSpawnPeriod(), (float)config.getCobwebSpawnChance(), config.getMaxCobwebSpawnsPerChunkSession());
 		spawnerTasks.put(chunk, spawnerTask);
 		spawnerTask.start();
 	}

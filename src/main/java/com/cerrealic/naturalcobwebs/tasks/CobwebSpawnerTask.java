@@ -16,13 +16,17 @@ public class CobwebSpawnerTask {
 	private final Chunk chunk;
 	private final Random random;
 	private final float spawnChance;
+	private int totalSpawned;
+	private final int maxSpawns;
 
-	public CobwebSpawnerTask(Chunk chunk, int delay, int period, float spawnChance) {
+	public CobwebSpawnerTask(Chunk chunk, int delay, int period, float spawnChance, int maxSpawns) {
 		this.chunk = chunk;
 		this.delay = delay;
 		this.period = period;
 		this.random = new Random();
 		this.spawnChance = spawnChance;
+		this.totalSpawned = 0;
+		this.maxSpawns = maxSpawns;
 	}
 
 	public CobwebSpawnerTask start() {
@@ -49,6 +53,10 @@ public class CobwebSpawnerTask {
 		return runningTask != null && !runningTask.isCancelled();
 	}
 
+	public int getTotalSpawned() {
+		return totalSpawned;
+	}
+
 	private void attemptSpawn() {
 		ChunkSnapshot cs = chunk.getChunkSnapshot();
 		for (int x = 1; x < 15; x++) {
@@ -58,6 +66,11 @@ public class CobwebSpawnerTask {
 					Material mat = cs.getBlockType(x, y, z);
 					if (isValidSpawnCoord(cs, x, y, z) && random.nextFloat() < spawnChance) {
 						chunk.getBlock(x, y, z).setType(Material.COBWEB);
+						totalSpawned++;
+						if (totalSpawned >= maxSpawns) {
+							stop();
+							return;
+						}
 					}
 				}
 			}

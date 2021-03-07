@@ -16,7 +16,6 @@ public class NaturalCobwebsPlugin extends CerspiPlugin {
 		super.onEnable();
 
 		Cerspi.registerListeners(this, new GeneralEventListener(this));
-		//Cerspi.registerCommands(this, false, new CommandNeuteredCreepers(this));
 	}
 
 	@Override
