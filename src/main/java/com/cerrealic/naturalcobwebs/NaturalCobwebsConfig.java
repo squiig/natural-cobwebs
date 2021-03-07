@@ -20,7 +20,7 @@ public class NaturalCobwebsConfig extends CerspiPluginConfig {
 	protected HashSet<ConfigNode> getDefinedNodes() {
 		cobwebSpawnChance = new ConfigNode<>("cobweb-spawn-chance", 0.5f);
 		cobwebSpawnPeriod = new ConfigNode<>("cobweb-spawn-period", 200);
-		return Sets.newHashSet(cobwebSpawnChance);
+		return Sets.newHashSet(cobwebSpawnChance, cobwebSpawnPeriod);
 	}
 
 	public float getCobwebSpawnChance() {
